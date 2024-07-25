@@ -1,0 +1,52 @@
+<mvc:View controllerName="attachdown.attachdown.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:upload="sap.m.upload" > 
+<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="idPage">
+					<upload:UploadSet 
+					id="idAttach" 
+					showIcons="true" 
+					uploadEnabled="true" 
+                    mode="SingleSelectLeft"
+					terminationEnabled="true"
+						uploadUrl="/sap/opu/odata/sap/ZFILE_EX_SRV/AttachmentSet" 
+						instantUpload="true" 
+						
+						items="{path: 'oModelAttach>/' }"
+						beforeUploadStarts="onBeforeUploadStarts" uploadCompleted="onUploadComplete">
+
+			<upload:toolbar>
+				<OverflowToolbar id="_IDGenOverflowToolbar1">
+					<ToolbarSpacer id="_IDGenToolbarSpacer1"/>
+					<Button
+							id="downloadSelectedButton"
+							text="Download Content"
+							press="onDownloadSelectedButton"/>
+                  		 <Button
+							id="downloadSelectedButtonDataBase"
+							text="Download Content From Database"
+							press="onDownloadSelectedButtonDB"/>
+					<upload:UploadSetToolbarPlaceholder id="_IDGenUploadSetToolbarPlaceholder1" />
+				</OverflowToolbar>
+			</upload:toolbar>
+
+						<upload:items>
+							<upload:UploadSetItem id="_IDGenUploadSetItem1" 
+											      fileName="{oModelAttach>Filename}" 
+												  url="{oModelAttach>url}"
+												 visibleRemove="false" 
+												 visibleEdit="false"
+												 removePressed="onRemovePressed">
+								<upload:attributes>
+									<ObjectAttribute id="_IDGenObjectAttribute1" title="Guid" text="{oModelAttach>Guid}"/>
+								</upload:attributes>
+							</upload:UploadSetItem>
+						</upload:items>
+					</upload:UploadSet>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

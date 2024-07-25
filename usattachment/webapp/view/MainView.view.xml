@@ -1,0 +1,30 @@
+<mvc:View controllerName="usattachment.usattachment.controller.MainView"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m" xmlns:upload="sap.m.upload">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="idPage">
+					<upload:UploadSet 
+					id="idAttach" 
+					showIcons="true" 
+					uploadEnabled="true" 
+					terminationEnabled="true"
+						uploadUrl="/sap/opu/odata/sap/ZFILE_EX_SRV/AttachmentSet" 
+						instantUpload="true" 
+						
+						items="{path: 'oModelAttach>/' }"
+						beforeUploadStarts="onBeforeUploadStarts" uploadCompleted="onUploadComplete">
+						<upload:items>
+							<upload:UploadSetItem id="_IDGenUploadSetItem1" fileName="{oModelAttach>Filename}" visibleRemove="true" removePressed="onRemovePressed">
+								<upload:attributes>
+									<ObjectAttribute id="_IDGenObjectAttribute1" title="Guid" text="{oModelAttach>Guid}"/>
+								</upload:attributes>
+							</upload:UploadSetItem>
+						</upload:items>
+					</upload:UploadSet>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
